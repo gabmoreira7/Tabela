@@ -88,6 +88,7 @@
               <button onclick="abrirURL('https://pt.wikipedia.org/wiki/Ada_Lovelace')">Ada Lovelace</button>
               <button onclick="abrirURL('https://pt.wikipedia.org/wiki/Steve_Jobs')">Steve Jobs</button>
               <button onclick="abrirURL('https://pt.wikipedia.org/wiki/Nikola_Tesla')">Nikola Tesla</button>
+               <button onclick="abrirFormulario()">Fale conosco</button>
             </div>
           </td>
       
@@ -102,8 +103,68 @@
         function abrirURL(url) {
           document.getElementById('iframeConteudo').src = url;
         }
-      </script>
-      
-      </body>
-      </html>
-      
+        
+    function abrirURL(url) {
+      document.getElementById('iframeConteudo').src = url;
+    }
+
+    function abrirFormulario() {
+      const formularioHTML = `
+        <html>
+        <head>
+          <style>
+            body {
+              font-family: Arial;
+              padding: 20px;
+            }
+            input, textarea {
+              width: 100%;
+              padding: 8px;
+              margin-bottom: 10px;
+            }
+            button {
+              padding: 10px;
+              width: 100%;
+              cursor: pointer;
+              background-color: #4CAF50;
+              color: white;
+              border: none;
+            }
+            button:hover {
+              background-color: #45a049;
+            }
+          </style>
+        </head>
+        <body>
+          <h2>Formulário de Contato</h2>
+
+          <form action="https://formsubmit.co/seuemail@gmail.com" method="POST">
+            
+            <!-- Configurações FormSubmit -->
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_subject" value="Nova mensagem do site!">
+            <input type="hidden" name="_template" value="table">
+
+            <label>Nome:</label>
+            <input type="text" name="nome" required>
+
+            <label>Email:</label>
+            <input type="email" name="email" required>
+
+            <label>Mensagem:</label>
+            <textarea name="mensagem" rows="4" required></textarea>
+
+            <button type="submit">Enviar</button>
+          </form>
+
+        </body>
+        </html>
+      `;
+
+      const iframe = document.getElementById('iframeConteudo');
+      iframe.srcdoc = formularioHTML;
+    }
+  </script>
+
+</body>
+</html>
